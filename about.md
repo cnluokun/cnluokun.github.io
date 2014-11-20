@@ -4,12 +4,10 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I'm just trying out on this new blog.
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself. 
+For more information about me see : [andysouth.co.uk](www.andysouth.co.uk).
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[southandy@gmail.com](mailto:southandy@gmail.com)
