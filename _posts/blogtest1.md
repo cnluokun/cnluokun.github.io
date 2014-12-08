@@ -1,7 +1,7 @@
 ---
 layout: page
 title: experimenting with Rmd
-permalink: /from Rmd 1/
+permalink: /fromRmd1/
 ---
 
 This is an R Markdown document. Markdown is a simple formatting syntax
