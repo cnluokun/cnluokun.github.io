@@ -18,7 +18,7 @@ chunks within the document. You can embed an R code chunk like this:
 
 You can also embed plots, for example:
 
-![](C:/rProjects/andysouth.github.io/_posts/blogtest1_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](images/unnamed-chunk-2-1.png)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.
