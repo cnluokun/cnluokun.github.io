@@ -1,6 +1,6 @@
 ---
 layout: post
-title: experimenting with Rmd
+title: copied header
 ---
 
 
