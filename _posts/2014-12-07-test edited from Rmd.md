@@ -5,7 +5,7 @@ author: "Andy South"
 date: "Thursday, November 20, 2014"
 output: md_document
 published: true
-status: process
+status: publish
 ---
 
 Testing embed plots, for example:
