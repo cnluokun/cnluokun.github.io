@@ -10,6 +10,8 @@ status: publish
 
 Testing embed plots, for example:
 
-![relative path](/images/unnamed-chunk-2-1.png)
+![name](/images/unnamed-chunk-2-1.png)
+
+![plot of chunk unnamed-chunk-2](/figures/unnamed-chunk-2-1.png) 
 
 
