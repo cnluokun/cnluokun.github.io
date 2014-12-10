@@ -23,7 +23,9 @@ chunks within the document. You can embed an R code chunk like this:
     ##  Max.   :25.0   Max.   :120.00
 
 You can also embed plots, for example:
+![testing plot](https://github.com/AndySouth/andysouth.github.io/images/unnamed-chunk-2-1.png)
 
+![relative path](/images/unnamed-chunk-2-1.png)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.
