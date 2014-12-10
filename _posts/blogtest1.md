@@ -1,5 +1,6 @@
 ---
 title: "blogtest1"
+layout: post
 author: "Andy South"
 date: "Thursday, November 20, 2014"
 output: md_document
