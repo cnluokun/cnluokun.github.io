@@ -1,12 +1,13 @@
 ---
-title: "blogtest1"
 layout: post
+title: direct from rmd
 author: "Andy South"
 date: "Thursday, November 20, 2014"
 output: md_document
 published: true
 status: publish
 ---
+ 
  
 TEST
  
@@ -31,4 +32,3 @@ You can also embed plots, for example:
  
 ![plot of chunk unnamed-chunk-2](/figures/unnamed-chunk-2-1.png) 
  
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
