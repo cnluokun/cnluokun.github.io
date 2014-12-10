@@ -4,7 +4,7 @@ title: trying to break1
 author: "Andy South"
 date: "Thursday, November 20, 2014"
 output: md_document
-published: false
+published: true
 status: process
 ---
 
