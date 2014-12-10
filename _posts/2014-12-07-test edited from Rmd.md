@@ -8,6 +8,10 @@ published: true
 status: publish
 ---
 
+{% highlight r %}
+summary(cars)
+{% endhighlight %}
+
 Testing embed plots, for example:
 
 ![name](/images/unnamed-chunk-2-1.png)
