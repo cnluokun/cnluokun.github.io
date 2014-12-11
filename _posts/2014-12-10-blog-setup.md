@@ -30,22 +30,23 @@ Project directory name : andysouth.github.io
  
  
 ### setting up so that I can write the posts in RMarkdown
-This was the tricky bit for me. I followed inspiration from [Jason Bryer](http://jason.bryer.org/posts/2012-12-10/Markdown_Jekyll_R_for_Blogging.html) and [Jon Zelner](http://www.jonzelner.net/jekyll/knitr/r/2014/07/02/autogen-knitr/). I had to tweak them both, the relative paths of figures was my main stumbling block.
- 
+This was the tricky bit for me. I followed inspiration from [Jason Bryer](http://jason.bryer.org/posts/2012-12-10/Markdown_Jekyll_R_for_Blogging.html) and [Jon Zelner](http://www.jonzelner.net/jekyll/knitr/r/2014/07/02/autogen-knitr/). I had to tweak them both, the relative paths of figures was my main stumbling block. This was partly because I'm running windows and I couldn't run the shell scripts that they created. Instead I just run an R function [rmd2md](https://github.com/AndySouth/andysouth.github.io/blob/master/rmd2md.r) which is much the same as Jason's with some edits to paths. The most important bits are :
  
  
 
-    summary(cars)
-
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+              render_jekyll(highlight = "pygments")
+                        
+              opts_knit$set(base.url = "/")
+              opts_chunk$set(fig.path = url_images)                     
+              
+              try(knit(text=content, output=outFile), silent=FALSE)
  
-You can also embed plots, for example:
+Jason's function searches a folder that you specify for Rmd files and then puts md files into another folder. I set this up so that any plots are put into a third folder. Thus in the root of my site includes these 3 folders.
+1. _Rmd/    contains the RMarkdown files that I edit
+2. _md/     contains the md files created by RMarkdown
+3. figures/ contains the plots created by any chunks of R code
+ 
+This then means that any R plot is automatically generated, saved as a png and it's address is written into the md document so that the plot is displayed in the blog, as shown in the very simple example below.
  
 ![plot of chunk unnamed-chunk-2](/figures/unnamed-chunk-2-1.png) 
  
