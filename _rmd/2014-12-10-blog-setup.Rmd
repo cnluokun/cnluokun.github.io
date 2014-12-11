@@ -1,0 +1,29 @@
+---
+layout: post
+title: Setting up this blog with Jekyll, R, knitr and RStudio.
+author: Andy South
+published: false
+status: process
+tags: R Jekyll RStudio
+---
+
+In this first post of this new blog I'll outline how I've set it up.
+
+I wanted to be able to write about R related things without having to copy and paste code, figures or files.
+
+
+
+Using the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) from GitHub.
+
+Editing and commiting from RStudio.
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
