@@ -4,28 +4,27 @@
 #' by default). It will change the published parameter to 'true' and change the
 #' status parameter to 'publish'.
 #' 
-#' @param dir the directory to process R Markdown files.
-#' @param images.dir the base directory where images will be generated.
-#' @param images.url
+#' @param path_site path to the local root storing the site files
+#' @param dir_rmd directory containing R Markdown files (inputs)
+#' @param dir_md directory containing markdown files (outputs)
+#' @param url_images where to store/get images created from plots directory +"/" (relative to path_site)
 #' @param out_ext the file extention to use for processed files.
 #' @param in_ext the file extention of input files to process.
 #' @param recursive should rmd files in subdirectories be processed.
 #' @return nothing.
 #' @author Jason Bryer <jason@bryer.org> edited by Andy South
 rmd2md <- function( path_site = getwd(),
-                              dir_rmd = "_rmd",
-                              dir_md = "_posts",                              
-                              #dir_images = "figures",
-                              url_images = "figures/",
-                              out_ext='.md', 
-                              in_ext='.rmd', 
-                              recursive=FALSE) {
+                    dir_rmd = "_rmd",
+                    dir_md = "_posts",                              
+                    #dir_images = "figures",
+                    url_images = "figures/",
+                    out_ext='.md', 
+                    in_ext='.rmd', 
+                    recursive=FALSE) {
   
   require(knitr, quietly=TRUE, warn.conflicts=FALSE)
 
-  #files <- list.files(path=dir, pattern=in_ext, ignore.case=TRUE, recursive=recursive)
   #andy change to avoid path problems when running without sh on windows 
-  #files <- list.files(path=pathSite, full.names=TRUE, pattern=in_ext, ignore.case=TRUE, recursive=recursive)
   files <- list.files(path=file.path(path_site,dir_rmd), pattern=in_ext, ignore.case=TRUE, recursive=recursive)
   
   for(f in files) {
@@ -48,37 +47,26 @@ rmd2md <- function( path_site = getwd(),
           content[statusLine] <- 'status: publish'
           content[publishedLine] <- 'published: true'
           
-          #outFile <- paste(substr(f, 1, (nchar(f)-(nchar(in_ext)))), out_ext, sep='')
+          #andy change to path
           outFile <- file.path(path_site, dir_md, paste0(substr(f, 1, (nchar(f)-(nchar(in_ext)))), out_ext))
-          
-          
+                   
           #render_markdown(strict=TRUE)
-          #andy added from elsewhere, does it do anything ?
+          #andy chnage to render for jekyll
           render_jekyll(highlight = "pygments")
           
           opts_knit$set(out.format='markdown') 
-          
+                    
+          # andy BEWARE don't set base.dir!! it caused me problems
           # "base.dir is never used when composing the URL of the figures; it is 
           # only used to save the figures to a different directory. 
           # The URL of an image is always base.url + fig.path"
           # https://groups.google.com/forum/#!topic/knitr/18aXpOmsumQ
-          
-          #andy adding this to try to fix relative path problems
-          #opts_knit$set(root.dir=path_site)  
-          #opts_knit$set(verbose=TRUE)  
-          
-          #BEWARE don't set base.dir!! it seems not to do what you'd expect
-          #opts_knit$set(base.dir=dir_images)
-          #opts_knit$set(base.dir=file.path(path_site, dir_images))
-          
+                    
           opts_knit$set(base.url = "/")
           opts_chunk$set(fig.path = url_images)                     
-
-          #opts_knit$set(base.url=images.url)
-          #opts_knit$set(base.url=file.path(path_site, dir_images))
-          ##opts_knit$set(base.url="/")
           
           try(knit(text=content, output=outFile), silent=FALSE)
+          
         } else {
           warning(paste("Not processing ", f, ", status is '", status, 
                         "'. Set status to 'process' to convert.", sep=''))
