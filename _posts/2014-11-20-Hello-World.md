@@ -1,6 +1,7 @@
 ---
 layout: post
 title: My first Jekyll blog post
+tags: R Jekyll RStudio
 ---
 
 
