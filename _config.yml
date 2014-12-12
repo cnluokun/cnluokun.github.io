@@ -60,6 +60,8 @@ version: v1.0.0
 sass:
   sass_dir: _scss
   style: :expanded # You might prefer to minify using :compressed
+  #these styles are just for code blocks i think
+  #http://web-design-weekly.com/2014/06/15/different-sass-output-styles/
 
 # Use the following plug-ins
 gems:
