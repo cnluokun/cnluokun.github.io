@@ -47,14 +47,34 @@ Jason's function searches a folder that you specify for Rmd files and then puts 
 | _md    |  | md files created by RMarkdown |
 | figures |  | plots created by any chunks of R code |
  
-This then means that any R plot is automatically generated, saved as a png and it's address is written into the md document so that the plot is displayed in the blog, as shown in the very simple example below.
+This then means that any R plot is automatically generated, saved as a png and it's address is written into the md document so that the plot is displayed in the blog. This is shown in a simple example below that queries the WHO API to get the number of cases of one of the forms of sleeping sickness in 2013.
  
 
 {% highlight r %}
+code <- "NTD_4"
+year <- 2013
+url <- paste0('http://apps.who.int/gho/athena/api/GHO/',code,'.csv?filter=COUNTRY:*;YEAR:',year)
+#read query result into dataframe
+dF <- read.csv(url,as.is=TRUE)
 library(rworldmap)
-#just to show an example plot
-mapCountryData()
+sPDF <- joinCountryData2Map(dF, nameJoinColumn="COUNTRY", joinCode="ISO3")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 24 codes from your data successfully matched countries in the map
+## 0 codes from your data failed to match with a country code in the map
+## 220 codes from the map weren't represented in your data
+{% endhighlight %}
+
+
+
+{% highlight r %}
+mapCountryData(sPDF,nameColumnToPlot="Numeric",catMethod="fixedWidth",mapRegion="africa", mapTitle="Gambian sleeping sickness cases in 2013")
 {% endhighlight %}
 
 ![plot of chunk 14-12-10-rworldmap](/figures/14-12-10-rworldmap-1.png) 
  
+ 
+If you'd like to look here is the [entire source code](https://github.com/AndySouth/andysouth.github.io/) for the blog and for this [individual page](https://github.com/AndySouth/andysouth.github.io/blob/master/_rmd/2014-12-10-blog-setup.Rmd).  
