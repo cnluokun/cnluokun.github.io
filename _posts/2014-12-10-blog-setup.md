@@ -35,40 +35,25 @@ This was the tricky bit for me. I followed inspiration from [Jason Bryer](http:/
  
 
 {% highlight r %}
-          render_jekyll(highlight = "pygments")
-                    
-          opts_knit$set(base.url = "/")
-          opts_chunk$set(fig.path = url_images)                     
-          
-          try(knit(text=content, output=outFile), silent=FALSE)
+render_jekyll(highlight = "pygments")       
+opts_knit$set(base.url = "/")
+opts_chunk$set(fig.path = url_images)                     
+try(knit(text=content, output=outFile), silent=FALSE)
 {% endhighlight %}
  
 Jason's function searches a folder that you specify for Rmd files and then puts md files into another folder. I set this up so that any plots are put into a third folder. Thus in the root of my site includes these 3 folders.
  
 | Folder |     | Contents |
 | ------ | --- | --- |
-| _Rmd   | --- | RMarkdown files that I edit |
-| _md    | --- | md files created by RMarkdown |
-| figures | --- | plots created by any chunks of R code |
+| _Rmd   |  | RMarkdown files that I edit |
+| _md    |  | md files created by RMarkdown |
+| figures |  | plots created by any chunks of R code |
  
 This then means that any R plot is automatically generated, saved as a png and it's address is written into the md document so that the plot is displayed in the blog, as shown in the very simple example below.
  
 
 {% highlight r %}
 library(rworldmap)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: sp
-## ### Welcome to rworldmap ###
-## For a short introduction type : 	 vignette('rworldmap')
-{% endhighlight %}
-
-
-
-{% highlight r %}
 #just to show an example plot
 mapCountryData()
 {% endhighlight %}
