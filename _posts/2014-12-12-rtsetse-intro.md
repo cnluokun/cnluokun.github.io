@@ -1,0 +1,16 @@
+---
+layout: post
+title: An introduction to rtsetse, a detailed population simulation in R
+author: Andy South
+published: true
+status: publish
+tags: R 
+---
+ 
+ 
+ 
+ 
+I was tasked with creating a spatial, age and sex structured simulation of tsetse flies in R.
+ 
+ 
+ 

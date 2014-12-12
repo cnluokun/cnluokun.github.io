@@ -7,7 +7,12 @@ status: publish
 tags: R Jekyll RStudio
 ---
  
-In this first post of this new blog I'll outline how I've set it up.
+In the first post of this new blog I'll outline how I've set the blog up. 
+ 
+* writing posts in Rmarkdown
+* converting posts to markdown from R
+* push to Github where Jekyll renders the markdown
+* organising all as an RStudio project 
  
 ## What I wanted
 I wanted to be able to write about R related things without having to copy and paste code, figures or files. I had used [Rmarkdown](http://rmarkdown.rstudio.com/) and [knitr](http://yihui.name/knitr/) before so wanted to use them. I have a wordpress site elsewhere that someone helped me set up a couple of years ago with a blog that I've never used. Initially I tried seeing if I could create posts using RMarkdown and put them into that wordpress blog. A brief search revealed that was not straightforward and that Jekyll was the way to go.  
@@ -24,22 +29,15 @@ Thanks to Jan Gorecki who answered a stackoverflow question that pointed me in t
  
 ### enabling editing of the site from RStudio
 I cloned the Github repository for my site using RStudio :
-File, New project, Version control, Clone git
-Repo URL : https://github.com/AndySouth/andysouth.github.io
-Project directory name : andysouth.github.io
+ 
+* File, New project, Version control, Clone git
+* Repo URL : https://github.com/AndySouth/andysouth.github.io
+* Project directory name : andysouth.github.io
  
  
 ### setting up so that I can write the posts in RMarkdown
-This was the tricky bit for me. I followed inspiration from [Jason Bryer](http://jason.bryer.org/posts/2012-12-10/Markdown_Jekyll_R_for_Blogging.html) and [Jon Zelner](http://www.jonzelner.net/jekyll/knitr/r/2014/07/02/autogen-knitr/). I had to tweak them both, the relative paths of figures was my main stumbling block. This was partly because I'm running windows and I couldn't run the shell scripts that they created. Instead I just run an R function [rmd2md](https://github.com/AndySouth/andysouth.github.io/blob/master/rmd2md.r) which is much the same as Jason's with some edits to paths. The most important bits are :
+This was the tricky bit for me. I followed inspiration from [Jason Bryer](http://jason.bryer.org/posts/2012-12-10/Markdown_Jekyll_R_for_Blogging.html) and [Jon Zelner](http://www.jonzelner.net/jekyll/knitr/r/2014/07/02/autogen-knitr/). I had to tweak them both, the relative paths of figures was my main stumbling block. This was partly because I'm running windows and I couldn't run the shell scripts that they created. Instead I just run an R function [rmd2md](https://github.com/AndySouth/andysouth.github.io/blob/master/rmd2md.r) which is much the same as Jason's with some edits to paths and jekyll rendering. 
  
- 
-
-{% highlight r %}
-render_jekyll(highlight = "pygments")       
-opts_knit$set(base.url = "/")
-opts_chunk$set(fig.path = url_images)                     
-try(knit(text=content, output=outFile), silent=FALSE)
-{% endhighlight %}
  
 Jason's function searches a folder that you specify for Rmd files and then puts md files into another folder. I set this up so that any plots are put into a third folder. Thus in the root of my site includes these 3 folders.
  
@@ -56,12 +54,6 @@ This then means that any R plot is automatically generated, saved as a png and i
 library(rworldmap)
 #just to show an example plot
 mapCountryData()
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## using example data because no file specified in rwmCheckAndLoadInput
 {% endhighlight %}
 
 ![plot of chunk 14-12-10-rworldmap](/figures/14-12-10-rworldmap-1.png) 

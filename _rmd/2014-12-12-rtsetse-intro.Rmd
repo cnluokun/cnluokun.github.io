@@ -7,10 +7,16 @@ status: process
 tags: R 
 ---
 
+In this post I introduce newly developed R code to simulate tsetse fly populations developed for the [Liverpool School for Tropical Medicine](http://www.lstmed.ac.uk/) starting in 2014.
 
 
+African sleeping sickness is a serious disease caused by a trypanosome parasite transmitted by tsetse flies. Tsetse flies are themselves interesting as they feed entirely on blood, don't have aquatic larvae and females produce a small number of larvae one at a time. Three common options for controlling tsetse flies and the disease are aerial spraying, treating cattle with insecticides and putting out small baited traps (somewhat like a handkerchief).  
 
-I was tasked with creating a spatial, age and sex structured simulation of tsetse flies in R.
+
+Glyn Vale and [Steve Torr](http://www.lstmed.ac.uk/research/departments/staff-profiles/steve-torr/) are leading researchers in the development of baits for controlling tsetse flies. Over the past 10 years they have developed a series of Excel based [decision tools](http://www.tsetse.org/tools/index.html) for tsetse control.
+
+
+I was tasked with creating a spatial, age and sex structured simulation of tsetse fly populations in R based upon [Hat-trick](http://www.tsetse.org/trick/index.html), the most recent and detailed of these Excel tools. Hat-Trick
 
 
 
