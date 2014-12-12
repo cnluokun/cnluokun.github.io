@@ -45,13 +45,39 @@ This was the tricky bit for me. I followed inspiration from [Jason Bryer](http:/
  
 Jason's function searches a folder that you specify for Rmd files and then puts md files into another folder. I set this up so that any plots are put into a third folder. Thus in the root of my site includes these 3 folders.
  
-| Folder | Contents |
-| ------ | --- |
-| _Rmd   | the RMarkdown files that I edit |
-| _md    | the md files created by RMarkdown |
-| figures | the plots created by any chunks of R code |
+| Folder |     | Contents |
+| ------ | --- | --- |
+| _Rmd   | --- | RMarkdown files that I edit |
+| _md    | --- | md files created by RMarkdown |
+| figures | --- | plots created by any chunks of R code |
  
 This then means that any R plot is automatically generated, saved as a png and it's address is written into the md document so that the plot is displayed in the blog, as shown in the very simple example below.
  
-![plot of chunk unnamed-chunk-2](/figures/unnamed-chunk-2-1.png) 
+
+{% highlight r %}
+library(rworldmap)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Loading required package: sp
+## ### Welcome to rworldmap ###
+## For a short introduction type : 	 vignette('rworldmap')
+{% endhighlight %}
+
+
+
+{% highlight r %}
+#just to show an example plot
+mapCountryData()
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## using example data because no file specified in rwmCheckAndLoadInput
+{% endhighlight %}
+
+![plot of chunk 14-12-10-rworldmap](/figures/14-12-10-rworldmap-1.png) 
  
