@@ -34,17 +34,22 @@ This was the tricky bit for me. I followed inspiration from [Jason Bryer](http:/
  
  
 
-              render_jekyll(highlight = "pygments")
-                        
-              opts_knit$set(base.url = "/")
-              opts_chunk$set(fig.path = url_images)                     
-              
-              try(knit(text=content, output=outFile), silent=FALSE)
+{% highlight r %}
+          render_jekyll(highlight = "pygments")
+                    
+          opts_knit$set(base.url = "/")
+          opts_chunk$set(fig.path = url_images)                     
+          
+          try(knit(text=content, output=outFile), silent=FALSE)
+{% endhighlight %}
  
 Jason's function searches a folder that you specify for Rmd files and then puts md files into another folder. I set this up so that any plots are put into a third folder. Thus in the root of my site includes these 3 folders.
-1. _Rmd/    contains the RMarkdown files that I edit
-2. _md/     contains the md files created by RMarkdown
-3. figures/ contains the plots created by any chunks of R code
+ 
+| Folder | Contents |
+| ------ | --- |
+| _Rmd   | the RMarkdown files that I edit |
+| _md    | the md files created by RMarkdown |
+| figures | the plots created by any chunks of R code |
  
 This then means that any R plot is automatically generated, saved as a png and it's address is written into the md document so that the plot is displayed in the blog, as shown in the very simple example below.
  
