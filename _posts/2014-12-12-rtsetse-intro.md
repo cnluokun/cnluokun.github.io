@@ -13,17 +13,27 @@ In this post I introduce newly developed R code to simulate tsetse fly populatio
 African sleeping sickness is a serious disease caused by a trypanosome parasite transmitted by tsetse flies. Tsetse flies are themselves interesting as they feed entirely on blood, don't have aquatic larvae and females produce a small number of larvae one at a time. Three common options for controlling tsetse flies and the disease are aerial spraying, treating cattle with insecticides and putting out small baited traps (somewhat like a handkerchief).  
  
  
-Glyn Vale and [Steve Torr](http://www.lstmed.ac.uk/research/departments/staff-profiles/steve-torr/) are leading researchers in the development of baits for controlling tsetse flies. Over the past 10 years they have developed a series of Excel based [decision tools](http://www.tsetse.org/tools/index.html) for tsetse control.
+Glyn Vale and [Steve Torr](http://www.lstmed.ac.uk/research/departments/staff-profiles/steve-torr/) are leading researchers in the development of baits for controlling tsetse flies. Over the past 10 years they have developed a series of Excel based [decision tools](http://www.tsetse.org/tools/index.html) for tsetse control. Now the Bill & Melinda Gates Foundation are funding the update of one of these tools.
  
  
 I was tasked with creating a spatial, age and sex structured simulation of tsetse fly populations in R based upon [Hat-trick](http://www.tsetse.org/trick/index.html), the most recent and detailed of these Excel tools. Hat-Trick consists of around 10 Excel workbooks linked by VBA code. Some workbooks have tens of worksheets and the longest sheet has 20,000 rows. Hat-trick steps the user through a series of detailed modelling steps with plenty of documentation. The amount of detail inevitably makes the model very complicated. The aim of developing the replacement in R was to develop something that was more robust, transparent and reproducible.
  
  
-My task was to develop both a core simulation and a user-interface.
+We decided to split the task in two.
+ 
+1. Population simulation
+2. User interface(s)
  
  
-In tackling
+###1. Population simulation - rtsetse
  
+The tsetse population simulation is being developed as a series of modular functions grouped into an R package called *rtsetse*. There are, for example, separate functions for births, deaths and movement. Population simulations are run by other, longer functions that call e.g. births, deaths and movement. This modular design allows the program to follow the mechanisms represented in the existing Excel model while allowing alternative representations to be incorporated at a later date. The source code for [rtsetse is on Github](https://github.com/AndySouth/rtsetse).
+ 
+ 
+ 
+### 2. User interface(s) - shinytse
+ 
+User interfaces for the simulation are being developed in the wonderful shiny.
  
  
  
