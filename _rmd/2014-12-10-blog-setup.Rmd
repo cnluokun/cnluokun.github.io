@@ -61,5 +61,7 @@ mapCountryData(sPDF,nameColumnToPlot="Numeric",catMethod="fixedWidth",mapRegion=
 
 ```
 
+The code syntax highlighting and dark grey background for both code and R text outputs are what come as the default with Jekyll-now. I'm a little unsure about them. They seem to be specified in [_highlights.scss](https://github.com/AndySouth/andysouth.github.io/blob/master/_scss/_highlights.scss), perhaps I'll look at modifying later.   
+
 
 If you'd like to look here is the [entire source code](https://github.com/AndySouth/andysouth.github.io/) for the blog and for this [individual page](https://github.com/AndySouth/andysouth.github.io/blob/master/_rmd/2014-12-10-blog-setup.Rmd).  
