@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Setting up this blog with Jekyll, R, RMarkdown and RStudio.
+title: Blog with RStudio, R, RMarkdown, Jekyll and Github.
 author: Andy South
 published: true
 status: publish
@@ -25,7 +25,7 @@ Now I have this blog set up so that I can write all of the posts (including this
 ### creating Jekyll site on Github
 I used Barry Clarks amazing [Jekyll Now repository](https://github.com/barryclark/jekyll-now) which you can fork directly from Github and start editing to customize. He gives excellent instructions. What attarcted me to it was that it takes a matter of minutes to set up initially and if you decide you don't like it you can just delete.  
  
-Thanks to Jan Gorecki who answered a stackoverflow question that pointed me in this direction and I've copied some extra features like the Links and Index pages from his [site](https://github.com/jangorecki/jangorecki.github.io).  
+Thanks to Jan Gorecki whose answer on [stackoverflow](http://stackoverflow.com/a/26703757/1718356) pointed me in this direction and I've copied some extra features like the Links and Index pages from his [site](https://github.com/jangorecki/jangorecki.github.io).  
  
 ### enabling editing of the site from RStudio
 I cloned the Github repository for my site using RStudio :
