@@ -30,7 +30,7 @@ This separation allows for analyses run from the user interface also to be run f
  
 ###1. Population simulation - rtsetse
  
-The tsetse population simulation is being developed as a series of modular functions grouped into an R package called *rtsetse*. There are, for example, separate functions for births, deaths and movement. Population simulations are run by other, longer functions that call e.g. births, deaths and movement. This modular design allows the program to follow the mechanisms represented in the existing Excel model while allowing alternative representations to be incorporated at a later date. The source code for [rtsetse is on Github](https://github.com/AndySouth/rtsetse).
+The tsetse population simulation is being developed as a series of modular functions grouped into an R package called `rtsetse`. There are, for example, separate functions for births, deaths and movement. Population simulations are run by other, longer functions that call these modules. This modular design allows the program to follow the mechanisms represented in the existing Excel model while allowing alternative representations to be incorporated at a later date. The source code for [rtsetse is on Github](https://github.com/AndySouth/rtsetse).
  
  
  
@@ -44,7 +44,7 @@ An [under-development version of a user interface](https://andysouth.shinyapps.i
 ![shinytse UI screenshot](/images/shinytseUIpopOutput.png)
  
  
-User interfaces are being structured as a series of *shiny* [navbarPage](http://shiny.rstudio.com/reference/shiny/latest/navbarPage.html) objects which produce the menu across the top and allow users to step between different stages of the simulation. A simple off-the-shelf *css* file controls the appearance of the user interface.  
+User interfaces are being structured as a series of `shiny` [navbarPage](http://shiny.rstudio.com/reference/shiny/latest/navbarPage.html) objects which produce the menu across the top and allow users to step between different stages of the simulation. A simple off-the-shelf `css` file controls the appearance of the user interface.  
  
  
 The [source for the user interfaces is on Github](https://github.com/AndySouth/shinytse).
