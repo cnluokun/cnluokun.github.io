@@ -103,13 +103,104 @@ I had to be careful specifying the spatial y & x dimensions as they do not alway
  
  
 ### Accessing array dimensions
-This array structure allows relatively transparent access to elements and summaries.
+This array structure allows relatively transparent access to elements and summaries as shown below.
  
-#   aGrid['y1','x1','M',] #an age structure for one cell
-#   sum(aGrid['y1','x1','M',]) #total M in one cell
-#   sum(aGrid['y1','x1',,]) #total pop in one cell
-#   aGrid[,,'M','age2'] #a grid of one age  
-#   apply(aGrid,MARGIN=c('y','x'),sum) #grid for all ages & sexes
-#   apply(aGrid,MARGIN=c('age'),sum) #summed age structure for whole pop
-#   apply(aGrid,MARGIN=c('sex'),sum) #summed sex ratio for whole pop  
+An age structure for one grid cell
+
+{% highlight r %}
+aGrid['y1','x1','M',] 
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## age1 age2 
+##   13   37
+{% endhighlight %}
+ 
+Total Males in one grid cell
+
+{% highlight r %}
+sum(aGrid['y1','x1','M',])
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 50
+{% endhighlight %}
+ 
+Total population in one grid cell
+
+{% highlight r %}
+sum(aGrid['y1','x1',,]) #
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 76
+{% endhighlight %}
+ 
+A spatial grid for one age
+
+{% highlight r %}
+aGrid[,,'M','age2']   
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##     x
+## y    x1 x2 x3
+##   y1 37 41 45
+##   y2 38 42 46
+##   y3 39 43 47
+##   y4 40 44 48
+{% endhighlight %}
+ 
+A spatial grid of total population
+
+{% highlight r %}
+apply(aGrid,MARGIN=c('y','x'),sum) 
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##     x
+## y    x1  x2  x3
+##   y1 76  92 108
+##   y2 80  96 112
+##   y3 84 100 116
+##   y4 88 104 120
+{% endhighlight %}
+ 
+Summed age structure for the whole population
+
+{% highlight r %}
+apply(aGrid,MARGIN=c('age'),sum) 
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## age1 age2 
+##  300  876
+{% endhighlight %}
+ 
+Summed sex ratio for thewhole population  
+
+{% highlight r %}
+apply(aGrid,MARGIN=c('sex'),sum) 
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##   F   M 
+## 444 732
+{% endhighlight %}
+ 
+I have no written these array access statements into a helper function that I might describe later.
  

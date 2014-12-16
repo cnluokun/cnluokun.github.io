@@ -41,13 +41,42 @@ I had to be careful specifying the spatial y & x dimensions as they do not alway
 
 
 ### Accessing array dimensions
-This array structure allows relatively transparent access to elements and summaries.
+This array structure allows relatively transparent access to elements and summaries as shown below.
 
-#   aGrid['y1','x1','M',] #an age structure for one cell
-#   sum(aGrid['y1','x1','M',]) #total M in one cell
-#   sum(aGrid['y1','x1',,]) #total pop in one cell
-#   aGrid[,,'M','age2'] #a grid of one age  
-#   apply(aGrid,MARGIN=c('y','x'),sum) #grid for all ages & sexes
-#   apply(aGrid,MARGIN=c('age'),sum) #summed age structure for whole pop
-#   apply(aGrid,MARGIN=c('sex'),sum) #summed sex ratio for whole pop  
+An age structure for one grid cell
+```{r, eval=TRUE, echo=TRUE}
+aGrid['y1','x1','M',] 
+```
+
+Total Males in one grid cell
+```{r, eval=TRUE, echo=TRUE}
+sum(aGrid['y1','x1','M',])
+```
+
+Total population in one grid cell
+```{r, eval=TRUE, echo=TRUE}
+sum(aGrid['y1','x1',,]) #
+```
+
+A spatial grid for one age
+```{r, eval=TRUE, echo=TRUE}
+aGrid[,,'M','age2']   
+```
+
+A spatial grid of total population
+```{r, eval=TRUE, echo=TRUE}
+apply(aGrid,MARGIN=c('y','x'),sum) 
+```
+
+Summed age structure for the whole population
+```{r, eval=TRUE, echo=TRUE}
+apply(aGrid,MARGIN=c('age'),sum) 
+```
+
+Summed sex ratio for thewhole population  
+```{r, eval=TRUE, echo=TRUE}
+apply(aGrid,MARGIN=c('sex'),sum) 
+```
+
+I have no written these array access statements into a helper function that I might describe later.
 
