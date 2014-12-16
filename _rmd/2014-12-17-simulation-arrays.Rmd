@@ -7,19 +7,46 @@ status: notyet_process
 tags: R 
 ---
 
-I was tasked with creating a spatial, age and sex structured simulation of tsetse flies in R.
+In this post I'll outline why and how I use arrays as the main data structure in a population simulation which represents the age, sex and spatial location of tsetse flies. An earlier post outlines the background to this [tsetse population simulation]({% post_url 2014-12-12-rtsetse-intro %}).
 
-One of the first things I wanted to sort out was the main data structures that I was going to use.
 
-I eventually settled on using arrays.
+I wanted a data structure that would make it easy and transparent for me to access elements with minimal code. I considered data frames, matrices and lists but opted for arrays. Hadley Wickham's excellent [Advanced R Data Structures](http://adv-r.had.co.nz/Data-structures.html) section was very helpful.
 
-```{r}
-summary(cars)
+### Arrays
+An `array` in R is a multi-dimensional object, and a `matrix` is a special case of an `array` with just 2 dimensions. The code below shows how you can use the `dim` argument to the `array` function to set up the number of dimensions.
+
+
+```{r, eval=TRUE, echo=TRUE}
+array(c(1:24), dim=c(4,3,2))
 ```
 
+### Array dimensions
+You can use the `dimnames` argument to name both the elements within each dimension and the dimension itself. One way of doing this is to set `dimnames` to a named list. I wanted to reduce the chance of creating bugs by accessing elements by name rather than position where possible. The code below shows how I create an array with spatial, sex and age dimensions.
 
 
-```{r, echo=FALSE}
-plot(cars)
+```{r, eval=TRUE, echo=TRUE}
+nY <- 4
+nX <- 3
+iMaxAge <- 2
+sex <- c("F","M")
+dimnames1 <- list( y=paste0('y',1:nY), x=paste0('x',1:nX), sex=sex, age=paste0('age',1:iMaxAge))
+nElements <-  nY*nX*iMaxAge*length(sex)
+aGrid <- array(1:nElements, dim=c(nY,nX,2,iMaxAge), dimnames=dimnames1)
+aGrid
 ```
+
+### Spatial dimension trickiness
+I had to be careful specifying the spatial y & x dimensions as they do not always go in the order that you might expect (and your expectations may vary depending on whether your background is more geographical or statistical). By specifying y rather than x as the first dimension the array displays in the correct orientation with x on the horizontal and y on the vertical. Note that the y dimnsion elements start from the top which can cause geographical issues later.
+
+
+### Accessing array dimensions
+This array structure allows relatively transparent access to elements and summaries.
+
+#   aGrid['y1','x1','M',] #an age structure for one cell
+#   sum(aGrid['y1','x1','M',]) #total M in one cell
+#   sum(aGrid['y1','x1',,]) #total pop in one cell
+#   aGrid[,,'M','age2'] #a grid of one age  
+#   apply(aGrid,MARGIN=c('y','x'),sum) #grid for all ages & sexes
+#   apply(aGrid,MARGIN=c('age'),sum) #summed age structure for whole pop
+#   apply(aGrid,MARGIN=c('sex'),sum) #summed sex ratio for whole pop  
 
