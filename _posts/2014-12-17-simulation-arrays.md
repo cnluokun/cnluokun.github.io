@@ -99,7 +99,7 @@ aGrid
 {% endhighlight %}
  
 ### Spatial dimension trickiness
-I had to be careful specifying the spatial y & x dimensions as they do not always go in the order that you might expect (and your expectations may vary depending on whether your background is more geographical or statistical). By specifying y rather than x as the first dimension the array displays in the correct orientation with x on the horizontal and y on the vertical. Note that the y dimnsion elements start from the top which can cause geographical issues later.
+I had to be careful specifying the spatial y & x dimensions as they do not always go in the order that you might expect (and your expectations may vary depending on whether your background is more geographical or statistical !). By specifying y rather than x as the first dimension the array displays in the correct orientation with x on the horizontal and y on the vertical. (I started by having x,y but kept getting confused so decided to bite the bullet a few months in and change everything to y,x). Note that the y dimension elements start from the top which can cause geographical issues later.
  
  
 ### Accessing array dimensions
@@ -202,5 +202,5 @@ apply(aGrid,MARGIN=c('sex'),sum)
 ## 444 732
 {% endhighlight %}
  
-I have no written these array access statements into a helper function that I might describe later.
+I have now written these array access statements into a helper function that I might describe later.
  
