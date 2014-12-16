@@ -68,6 +68,11 @@ rmd2md <- function( path_site = getwd(),
           opts_knit$set(base.url = "/")
           opts_chunk$set(fig.path = url_images)                     
           
+          #andy I could try to make figures bigger
+          #but that might make not work so well on mobile
+          #opts_chunk$set(fig.width  = 8.5,
+          #               fig.height = 5.25)
+          
           try(knit(text=content, output=outFile), silent=FALSE)
           
         } else {
