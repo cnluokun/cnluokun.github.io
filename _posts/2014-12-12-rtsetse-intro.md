@@ -4,7 +4,7 @@ title: An introduction to rtsetse, a detailed population simulation in R
 author: Andy South
 published: true
 status: publish
-draft: true
+draft: false
 tags: R 
 ---
  
