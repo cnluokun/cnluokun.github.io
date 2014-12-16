@@ -4,10 +4,10 @@ title: About
 permalink: /about/
 ---
 
-I'm just trying out on this new blog.
+I'm a freelance developer and researcher with a background in ecology. I like R and maps. This blog is to share R related things.
 
-For more information about me see : [andysouth.co.uk](www.andysouth.co.uk).
+For more see : [andysouth.co.uk](http://www.andysouth.co.uk).
 
-### Contact me
+### Contact
 
 [southandy@gmail.com](mailto:southandy@gmail.com)
