@@ -10,6 +10,8 @@ For more see : [andysouth.co.uk](http://www.andysouth.co.uk).
 
 Or my [CV](/images/cv_AndySouth_2pages_dec2014.pdf)
 
+Or [google scholar](http://scholar.google.com/citations?user=eJz46kAAAAAJ&hl=en)
+
 ### Contact
 
 [southandy@gmail.com](mailto:southandy@gmail.com)
