@@ -8,7 +8,7 @@ draft: false
 tags: R 
 ---
  
-In this post I introduce [R code to simulate tsetse](https://github.com/AndySouth/rtsetse) fly populations I'm developing for the [Liverpool School for Tropical Medicine](http://www.lstmed.ac.uk/) starting in 2014. I will outline some background and point you to the code and user interface that are under development. In subsequent posts I'll cover particular aspects of implementation.
+In this post I introduce [R code to simulate tsetse](https://github.com/AndySouth/rtsetse) fly populations I'm developing for the [Liverpool School for Tropical Medicine](http://www.lstmed.ac.uk/) starting in 2014. I will outline some background and point you to the code and [user interface](https://andysouth.shinyapps.io/shinytse7/) that are under development. In subsequent posts I'll cover particular aspects of implementation.
  
  
 African sleeping sickness is a serious disease caused by a trypanosome parasite transmitted by tsetse flies. Tsetse flies are themselves interesting as they feed entirely on blood, don't have aquatic larvae and females produce a small number of larvae one at a time. Three common options for controlling tsetse flies and the disease are aerial spraying, treating cattle with insecticides and putting out small baited traps (somewhat like a handkerchief).  
@@ -39,7 +39,7 @@ The tsetse population simulation is being developed as a series of modular funct
  
 User interfaces for the simulation are being developed in the wonderful [shiny](http://shiny.rstudio.com/). These have the advantage that they can be run over the web or locally from R (useful where potential users in Africa may have limited connectivity). 
  
-An [under-development version of a user interface](https://andysouth.shinyapps.io/shinytse7/) can be accessed online, a screenshot is shown below.
+A [user interface under development](https://andysouth.shinyapps.io/shinytse7/) can be accessed online, a screenshot is shown below.
  
  
 ![shinytse UI screenshot](/images/shinytseUIpopOutput.png)
