@@ -98,7 +98,7 @@ aGrid
 ##   y4 40 44 48
 {% endhighlight %}
  
-The example above has just a few cells and ages. In our tsetse simulation we're often looking at 120 age categories (days) on a 50x50 grid.
+The example above has just a few cells and ages. In our tsetse simulation we're often looking at 120 age categories (days) on a 50x50 grid. [Here's](https://github.com/AndySouth/rtsetse/blob/master/R/rtCreateGrid.r) a function to aid creating such arrays.
  
  
 ### Spatial dimension trickiness
