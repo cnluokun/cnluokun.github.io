@@ -209,18 +209,7 @@ This array also allows me to save all the population data for a simulation of a 
  
 
 {% highlight r %}
-  libray(abind)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): could not find function "libray"
-{% endhighlight %}
-
-
-
-{% highlight r %}
+  library(abind)
   aRecord <- abind::abind(aGrid, along=0) 
   # replace lost dimension names
   names(dimnames(aRecord)) <- c('day','y','x','sex','age')
