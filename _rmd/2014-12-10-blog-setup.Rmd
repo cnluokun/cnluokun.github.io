@@ -3,7 +3,7 @@ layout: post
 title: Blog with RStudio, R, RMarkdown, Jekyll and Github.
 author: Andy South
 published: false
-status: process
+status: done_process
 draft: false
 tags: R Jekyll RStudio
 ---
