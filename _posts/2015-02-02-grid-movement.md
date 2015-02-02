@@ -30,87 +30,36 @@ This is the bare code for an island model in which no movers come in from outsid
  
 
 {% highlight r %}
+  #create a starting matrix and proportion moving
+  m <- matrix(c(0,0,0,0,1,0,0,0,0),nrow=3,ncol=3)
+  pMove <- 0.4
+ 
   #island model uses 0's for boundary cells
   mW = cbind( rep(0,nrow(m)), m[,-ncol(m)] )
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in nrow(m): object 'm' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
   mN = rbind( rep(0,ncol(m)), m[-nrow(m),] )
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in ncol(m): object 'm' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
   mE = cbind( m[,-1], rep(0,nrow(m)) )
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in cbind(m[, -1], rep(0, nrow(m))): object 'm' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
   mS = rbind( m[-1,], rep(0,ncol(m)) )
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in rbind(m[-1, ], rep(0, ncol(m))): object 'm' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
+ 
   #calc arrivers in a cell from it's 4 neighbours
   mArrivers <- pMove*(mN + mE + mS + mW)/4
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'pMove' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
   mStayers <- (1-pMove)*m
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'pMove' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
+  
   mNew <- mArrivers + mStayers
 {% endhighlight %}
+ 
+Viewing the result.
+
+{% highlight r %}
+  mNew
+{% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'mArrivers' not found
+##      [,1] [,2] [,3]
+## [1,]  0.0  0.1  0.0
+## [2,]  0.1  0.6  0.1
+## [3,]  0.0  0.1  0.0
 {% endhighlight %}
  
  

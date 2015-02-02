@@ -29,6 +29,11 @@ A long time ago I wrote simulations of the movements of [beavers](http://www.aca
 This is the bare code for an island model in which no movers come in from outside and any leaving are lost to the population: 
 
 ```{r, eval=TRUE, echo=TRUE}
+
+  #create a starting matrix and proportion moving
+  m <- matrix(c(0,0,0,0,1,0,0,0,0),nrow=3,ncol=3)
+  pMove <- 0.4
+
   #island model uses 0's for boundary cells
   mW = cbind( rep(0,nrow(m)), m[,-ncol(m)] )
   mN = rbind( rep(0,ncol(m)), m[-nrow(m),] )
@@ -40,6 +45,11 @@ This is the bare code for an island model in which no movers come in from outsid
   mStayers <- (1-pMove)*m
   
   mNew <- mArrivers + mStayers
+```
+
+Viewing the result.
+```{r, eval=TRUE, echo=TRUE}
+  mNew
 ```
 
 
