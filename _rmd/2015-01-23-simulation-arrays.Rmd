@@ -3,7 +3,7 @@ layout: post
 title: Spatial, age and sex structured population simulation in R with arrays
 author: Andy South
 published: false
-status: process
+status: done_process
 draft: false
 tags: R 
 ---
