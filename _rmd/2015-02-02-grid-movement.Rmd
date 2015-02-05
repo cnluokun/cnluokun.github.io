@@ -119,7 +119,7 @@ The movement functions shown above can be called over multiple time steps as sho
 
 nY <- 6
 nX <- 5
-nDays <- 9
+nDays <- 12
 #create arrays to store results
 aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays))
 

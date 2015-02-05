@@ -131,7 +131,7 @@ The movement functions shown above can be called over multiple time steps as sho
 {% highlight r %}
 nY <- 6
 nX <- 5
-nDays <- 9
+nDays <- 12
 #create arrays to store results
 aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays))
  
@@ -146,17 +146,7 @@ for(day in 2:10)
   aReflect[,,day] <- rtMoveReflect(aReflect[,,day-1], pMove=pMove)
     
 }
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in `[<-`(`*tmp*`, , , day, value = structure(c(0.017966718, 0.043570224, : subscript out of bounds
-{% endhighlight %}
-
-
-
-{% highlight r %}
+ 
 #quick way of displaying the resulting arrays
 require(raster)
 plot( raster::brick(aIsland), axes=FALSE, main="island movement" )
