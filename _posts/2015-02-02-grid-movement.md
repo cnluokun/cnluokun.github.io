@@ -131,7 +131,7 @@ The movement functions shown above can be called over multiple time steps as sho
 {% highlight r %}
 nY <- 6
 nX <- 5
-nDays <- 8
+nDays <- 9
 #create arrays to store results
 aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays))
  
@@ -151,7 +151,7 @@ for(day in 2:10)
 
 
 {% highlight text %}
-## Error in `[<-`(`*tmp*`, , , day, value = structure(c(0.01747872, 0.04634952, : subscript out of bounds
+## Error in `[<-`(`*tmp*`, , , day, value = structure(c(0.017966718, 0.043570224, : subscript out of bounds
 {% endhighlight %}
 
 
