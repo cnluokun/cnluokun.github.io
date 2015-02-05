@@ -118,13 +118,13 @@ The movement functions shown above can be called over multiple time steps as sho
 ```{r, eval=TRUE, echo=TRUE}
 
 nY <- 6
-nX <- 4
-nDays <- 5
+nX <- 5
+nDays <- 6
 #create arrays to store results
-aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays)
+aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays))
 
 #populate central cell of starting grid on day1
-aIsland[2,2,1] <- aReflect[2,2,1] <- 1
+aIsland[3,2,1] <- aReflect[3,2,1] <- 1
 #set proportion moving
 pMove <- 0.4
 

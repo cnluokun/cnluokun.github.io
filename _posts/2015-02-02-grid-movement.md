@@ -128,4 +128,62 @@ Just looking back at the original post now I see that Kiran Dhanjal-Adams has ad
 The movement functions shown above can be called over multiple time steps as shown below.
  
 
+{% highlight r %}
+nY <- 6
+nX <- 5
+nDays <- 6
+#create arrays to store results
+aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays))
+ 
+#populate central cell of starting grid on day1
+aIsland[3,2,1] <- aReflect[3,2,1] <- 1
+#set proportion moving
+pMove <- 0.4
+ 
+for(day in 2:10)
+{
+  aIsland[,,day] <- rtMoveIsland(aIsland[,,day-1], pMove=pMove)  
+  aReflect[,,day] <- rtMoveReflect(aReflect[,,day-1], pMove=pMove)
+    
+}
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in `[<-`(`*tmp*`, , , day, value = structure(c(0.01422, 0.049884, : subscript out of bounds
+{% endhighlight %}
+
+
+
+{% highlight r %}
+#quick way of displaying the resulting arrays
+require(raster)
+plot( raster::brick(aIsland), axes=FALSE, main="island movement" )
+{% endhighlight %}
+
+![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-1.png) 
+
+{% highlight r %}
+#round(mIsland,2)
+ 
+plot( raster::brick(aReflect), axes=FALSE, main="reflecting movement" )
+{% endhighlight %}
+
+![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-2.png) 
+
+{% highlight r %}
+#round(mReflect,2)
+{% endhighlight %}
+ 
+ 
+ 
+I've also modified these movement functions to account for no-go areas and vegetation effects on movement. I'll describe these in a later post.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
