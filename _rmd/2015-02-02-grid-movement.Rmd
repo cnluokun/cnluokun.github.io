@@ -128,7 +128,7 @@ aIsland[3,2,1] <- aReflect[3,2,1] <- 1
 #set proportion moving
 pMove <- 0.4
 
-for(day in 2:10)
+for(day in 2:nDays)
 {
   aIsland[,,day] <- rtMoveIsland(aIsland[,,day-1], pMove=pMove)  
   aReflect[,,day] <- rtMoveReflect(aReflect[,,day-1], pMove=pMove)
