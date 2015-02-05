@@ -64,19 +64,19 @@ Viewing the result.
  
  
 Below this idea is used to create functions that accept :
-1.  m : a 2D matrix (y,x) of the spatial distribution of the population
-1.  pMove : the proportion of the population moving in a timestep
+1. m : a 2D matrix (y,x) of the spatial distribution of the population
+1. pMove : the proportion of the population moving in a timestep
  
 and return the new spatial distribution of the population.
  
-Note that these versions are deterministic, because that is what I have been asked to create, but that it would be easy to create versions using a movement probability with a stochastic component.
+Note that these versions are deterministic, because that is what I have been tasked to create for the tsetse simulation, but that it would be easy to modify to make movement stochastic determined by a movement probability.
  
  
 ### An island-model of movement
  
 
 {% highlight r %}
-rtMoveIsland <- function(m, pMove=0.4, verbose=FALSE) {
+rtMoveIsland <- function(m, pMove=0.4) {
   
   #speed efficient way of doing movement
   #create a copy of the matrix shifted 1 cell in each cardinal direction
@@ -101,7 +101,7 @@ rtMoveIsland <- function(m, pMove=0.4, verbose=FALSE) {
  
 
 {% highlight r %}
-rtMoveReflect <- function(m, pMove=0.4, verbose=FALSE) {
+rtMoveReflect <- function(m, pMove=0.4) {
   
   #speed efficient way of doing movement
   #create a copy of the matrix shifted 1 cell in each cardinal direction
@@ -122,11 +122,66 @@ rtMoveReflect <- function(m, pMove=0.4, verbose=FALSE) {
 }
 {% endhighlight %}
  
-Just looking back at the original post now I see that Kiran Dhanjal-Adams has also adapted the Game of Life to work with [reflecting boundaries](https://uqkdhanj.wordpress.com/2014/10/20/getting-started-with-r/).
+Just looking back at the original post now I see that Kiran Dhanjal-Adams has adapted the special case of the Game of Life to work with [reflecting boundaries](https://uqkdhanj.wordpress.com/2014/10/20/getting-started-with-r/).
+ 
+ 
+The movement functions shown above can be called over multiple time steps as shown below.
+ 
+
+{% highlight r %}
+  #create a starting matrix and proportion moving
+  mIsland <- mReflect <- matrix(c(0,0,0,0,1,0,0,0,0),nrow=3,ncol=3)
+  pMove <- 0.4
+ 
+  for(day in 1:10)
+  {
+    mIsland <- rtMoveIsland(mIsland, pMove=pMove)  
+    mReflect <- rtMoveReflect(mReflect, pMove=pMove) 
+    }
+ 
+  #quick way of displaying the matrices
+  image(mIsland)
+{% endhighlight %}
+
+![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-1.png) 
+
+{% highlight r %}
+  round(mIsland,2)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##      [,1] [,2] [,3]
+## [1,] 0.03 0.05 0.03
+## [2,] 0.05 0.07 0.05
+## [3,] 0.03 0.05 0.03
+{% endhighlight %}
+
+
+
+{% highlight r %}
+  image(mReflect)
+{% endhighlight %}
+
+![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-2.png) 
+
+{% highlight r %}
+  round(mReflect,2)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##      [,1] [,2] [,3]
+## [1,] 0.10 0.11 0.10
+## [2,] 0.11 0.12 0.11
+## [3,] 0.10 0.11 0.10
+{% endhighlight %}
  
  
  
- 
+I've also modified these movement functions to account for no-go areas and vegetation effects on movement. I'll describe these in a later post.
  
  
  
