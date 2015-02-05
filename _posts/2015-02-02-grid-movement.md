@@ -139,8 +139,9 @@ The movement functions shown above can be called over multiple time steps as sho
     mReflect <- rtMoveReflect(mReflect, pMove=pMove) 
     }
  
-  #quick way of displaying the matrices
-  image(mIsland)
+  #quick way of displaying the resulting matrices
+  require(raster)
+  plot( raster(mIsland), axes=FALSE, main="island movement" )
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-1.png) 
@@ -161,7 +162,7 @@ The movement functions shown above can be called over multiple time steps as sho
 
 
 {% highlight r %}
-  image(mReflect)
+  plot( raster(mReflect), axes=FALSE, main="reflecting movement" )
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-2.png) 
