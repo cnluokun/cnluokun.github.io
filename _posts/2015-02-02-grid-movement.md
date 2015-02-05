@@ -124,30 +124,28 @@ rtMoveReflect <- function(m, pMove=0.4) {
  
 Just looking back at the original post now I see that Kiran Dhanjal-Adams has adapted the special case of the Game of Life to work with [reflecting boundaries](https://uqkdhanj.wordpress.com/2014/10/20/getting-started-with-r/).
  
- 
 The movement functions shown above can be called over multiple time steps as shown below.
  
 
 {% highlight r %}
-nY <- 6
-nX <- 5
+nY <- 5
+nX <- 4
 nDays <- 12
 #create arrays to store results
 aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays))
  
 #populate central cell of starting grid on day1
-aIsland[3,2,1] <- aReflect[3,2,1] <- 1
+aIsland[2,2,1] <- aReflect[2,2,1] <- 1
 #set proportion moving
-pMove <- 0.4
+pMove <- 0.6
  
 for(day in 2:nDays)
 {
   aIsland[,,day] <- rtMoveIsland(aIsland[,,day-1], pMove=pMove)  
-  aReflect[,,day] <- rtMoveReflect(aReflect[,,day-1], pMove=pMove)
-    
+  aReflect[,,day] <- rtMoveReflect(aReflect[,,day-1], pMove=pMove)  
 }
  
-#quick way of displaying the resulting arrays
+#quick way of displaying population spread over time
 require(raster)
 plot( raster::brick(aIsland), axes=FALSE, main="island movement" )
 {% endhighlight %}
@@ -155,21 +153,16 @@ plot( raster::brick(aIsland), axes=FALSE, main="island movement" )
 ![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-1.png) 
 
 {% highlight r %}
-#round(mIsland,2)
- 
 plot( raster::brick(aReflect), axes=FALSE, main="reflecting movement" )
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-5](/figures/unnamed-chunk-5-2.png) 
-
-{% highlight r %}
-#round(mReflect,2)
-{% endhighlight %}
  
+You can see that with island movement the legend values decline more indicating population being lost off of the grid. With the reflecting movement the legend values decline less (and the decline is due to the population spreading out). Over more days with reflecting movement the population approaches an even distribution over the grid.
  
+I've now also modified these movement functions to account for no-go areas and vegetation effects on movement. I'll describe these in a later post.
  
-I've also modified these movement functions to account for no-go areas and vegetation effects on movement. I'll describe these in a later post.
- 
+As ever, any comments or suggestions of how this could be done differently are welcome.
  
  
  
