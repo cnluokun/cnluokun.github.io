@@ -117,23 +117,31 @@ The movement functions shown above can be called over multiple time steps as sho
 
 ```{r, eval=TRUE, echo=TRUE}
 
-  #create a starting matrix and proportion moving
-  mIsland <- mReflect <- matrix(c(0,0,0,0,1,0,0,0,0),nrow=3,ncol=3)
-  pMove <- 0.4
+nY <- 6
+nX <- 4
+nDays <- 5
+#create arrays to store results
+aIsland <- aReflect <- array(0, dim=c(nY, nX, nDays)
 
-  for(day in 1:10)
-  {
-    mIsland <- rtMoveIsland(mIsland, pMove=pMove)  
-    mReflect <- rtMoveReflect(mReflect, pMove=pMove) 
-    }
+#populate central cell of starting grid on day1
+aIsland[2,2,1] <- aReflect[2,2,1] <- 1
+#set proportion moving
+pMove <- 0.4
 
-  #quick way of displaying the resulting matrices
-  require(raster)
-  plot( raster(mIsland), axes=FALSE, main="island movement" )
-  round(mIsland,2)
+for(day in 2:10)
+{
+  aIsland[,,day] <- rtMoveIsland(aIsland[,,day-1], pMove=pMove)  
+  aReflect[,,day] <- rtMoveReflect(aReflect[,,day-1], pMove=pMove)
+    
+}
 
-  plot( raster(mReflect), axes=FALSE, main="reflecting movement" )
-  round(mReflect,2)
+#quick way of displaying the resulting arrays
+require(raster)
+plot( raster::brick(aIsland), axes=FALSE, main="island movement" )
+#round(mIsland,2)
+
+plot( raster::brick(aReflect), axes=FALSE, main="reflecting movement" )
+#round(mReflect,2)
 
 ```
 
