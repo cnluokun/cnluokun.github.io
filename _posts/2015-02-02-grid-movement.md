@@ -8,8 +8,6 @@ draft: true
 tags: R 
 ---
  
-draft
- 
 In this post I outline a way of simulating movement on a grid in R in a time efficient way. This is part of a simulation of tsetse fly populations I've been developing. Earlier posts outline some of the [background]({% post_url 2014-12-12-rtsetse-intro %}) and use of [arrays]({% post_url 2015-01-23-simulation-arrays %}) as the main data structure.
  
 My remit is to recreate in R an existing simulation developed in Excel ([Hat-trick](www.tsetse.org)) which represents a fly population on a square grid of different vegetation types. In the Excel simulation tsetse flies are represented as moving to one of the 4 cardinal neighbouring cells. The boundaries of the square area are considered to be reflective, thus assuming that cells outside of the area are similar to their neighbours within the area. Movement is also represented as being dependent upon the age & sex of flies and the vegetation within cells.  
@@ -64,6 +62,7 @@ Viewing the result.
  
  
 Below this idea is used to create functions that accept :
+ 
 1. m : a 2D matrix (y,x) of the spatial distribution of the population
 1. pMove : the proportion of the population moving in a timestep
  
@@ -122,9 +121,9 @@ rtMoveReflect <- function(m, pMove=0.4) {
 }
 {% endhighlight %}
  
-Just looking back at the original post now I see that Kiran Dhanjal-Adams has adapted the special case of the Game of Life to work with [reflecting boundaries](https://uqkdhanj.wordpress.com/2014/10/20/getting-started-with-r/).
+Since I started this I've just seen see that Kiran Dhanjal-Adams has a nice post adapting the special case of the Game of Life to work with [reflecting boundaries](https://uqkdhanj.wordpress.com/2014/10/20/getting-started-with-r/).
  
-The movement functions shown above can be called over multiple time steps as shown below.
+The movement functions that I show above can be called over multiple time steps as shown below.
  
 
 {% highlight r %}
@@ -160,7 +159,7 @@ plot( raster::brick(aReflect), axes=FALSE, main="reflecting movement" )
  
 You can see that with island movement the legend values decline more indicating population being lost off of the grid. With the reflecting movement the legend values decline less (and the decline is due to the population spreading out). Over more days with reflecting movement the population approaches an even distribution over the grid.
  
-I've now also modified these movement functions to account for no-go areas and vegetation effects on movement. I'll describe these in a later post.
+I've now also modified these movement functions to account for no-go areas and vegetation effects on movement. I'll describe these in a later post, in the meantime you could look at the `rtMove*` functions in my [rtsetse repository](https://github.com/AndySouth/rtsetse/tree/master/R).
  
 As ever, any comments or suggestions of how this could be done differently are welcome.
  
