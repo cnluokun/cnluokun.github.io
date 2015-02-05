@@ -139,7 +139,9 @@ plot( raster::brick(aIsland), axes=FALSE, main="island movement" )
 plot( raster::brick(aReflect), axes=FALSE, main="reflecting movement" )
 ```
 
-You can see that with island movement the legend values decline more indicating population being lost off of the grid. With the reflecting movement the legend values decline less (and the decline is due to the population spreading out). Over more days with reflecting movement the population approaches an even distribution over the grid.
+You can see that with island movement the legend values decline more indicating population being lost off of the grid. With the reflecting movement the legend values decline less (and the decline is due to the population spreading out). Over more days with reflecting movement the population approaches an even distribution over the grid. 
+
+As an aside. In both examples I used a non-square grid with the starting population slightly off-centre. I do this because experience has shown that using a square grid can hide array referencing bugs in your code. Using a non-square grid for tests and examples helps find these sooner.
 
 I've now also modified these movement functions to account for no-go areas and vegetation effects on movement. I'll describe these in a later post, in the meantime you could look at the `rtMove*` functions in my [rtsetse repository](https://github.com/AndySouth/rtsetse/tree/master/R).
 
