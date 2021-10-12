@@ -34,18 +34,7 @@ rmd2md <- function( path_site = getwd(),
     if(length(frontMatter) >= 2 & 1 %in% frontMatter) {
       statusLine <- which(substr(content, 1, 7) == 'status:')
       publishedLine <- which(substr(content, 1, 10) == 'published:')
-      if(statusLine > frontMatter[1] & statusLine < frontMatter[2]) {
-        status <- unlist(strsplit(content[statusLine], ':'))[2]
-        status <- sub('[[:space:]]+$', '', status)
-        status <- sub('^[[:space:]]+', '', status)
-        if(tolower(status) == 'process') {
-          #This is a bit of a hack but if a line has zero length (i.e. a
-          #black line), it will be removed in the resulting markdown file.
-          #This will ensure that all line returns are retained.
-          content[nchar(content) == 0] <- ' '
-          message(paste('Processing ', f, sep=''))
-          content[statusLine] <- 'status: publish'
-          content[publishedLine] <- 'published: true'
+      
           
           #andy change to path
           outFile <- file.path(path_site, dir_md, paste0(substr(f, 1, (nchar(f)-(nchar(in_ext)))), out_ext))
