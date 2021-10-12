@@ -1,6 +1,8 @@
 #
 # This file contains configuration flags to customize your site
 #
+layout: default
+comments: true
 
 # Name of your site (displayed in the header)
 name: Luo Kun
@@ -21,16 +23,16 @@ footer-links:
   email: 
   facebook: 
   flickr: 
-  github: andysouth
+  github: cnluokun
   instagram: 
   linkedin: 
   pinterest: 
   rss: Y # just type anything here for a working RSS icon, make sure you set the "url" above!
-  twitter: southmapr
+  twitter:  
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
 
 # Your disqus shortname, entering this will enable commenting on posts
-disqus: andysouthgithubio
+disqus: cnlowkeng
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: 
